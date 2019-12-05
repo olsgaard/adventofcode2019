@@ -43,12 +43,11 @@ def has_lonely_pair(numbers):
 	In this context a pair is one digit followed by the same digit. 
 	Fx, [1,1] will have a pair at index 0 and a non-pair at index 1
 	"""
-
 	ns = str(numbers)
-	# Determine if each digit is followed by the same digit, and thereby is a pair
-	has_pair = [ns[i] == ns[i+1] for i in range(len(ns)-1)]
-	# We are looking for a pair not followed by another pair
-	return any([has_pair[i] and not has_pair[i+1] for i in range(len(has_pair)-1)])
+	# List value of each pair
+	pairs = [ns[i] for i in range(len(ns)-1) if ns[i] == ns[i+1]]
+	# Check that at least one pair is not followed by the same pair
+	return any([pairs[i] != pairs[i+1] for i in range(len(pairs)-1)])
 
 def check_exanded_rules(password, _min=0, _max=999999, length=6):
 	return all((
@@ -63,5 +62,6 @@ assert check_exanded_rules(112233) == True
 assert check_exanded_rules(122333) == True
 assert check_exanded_rules(123444) == False
 assert check_exanded_rules(111122) == True
+assert check_exanded_rules(111123) == False
 
 print("puzzle 2:\t",sum([check_exanded_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
