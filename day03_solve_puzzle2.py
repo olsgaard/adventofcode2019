@@ -27,17 +27,12 @@ def convert_path_to_coordinates(wire_path):
 			if direction == "D":
 				current_position[1] -= 1
 			coordinates.append(tuple(current_position))
+
 	return coordinates
-
-def manhatten_distance(coordinates):
-	x = coordinates[0]
-	y = coordinates[1]
-
-	return abs(x) + abs(y)
 
 def find_distance_closest_cross(first_wire, second_wire):
 	""" Returns the number of steps taken to reach the first intersection of two wires"""
-	
+
 	first_grid = convert_path_to_coordinates(first_wire)
 	second_grid = convert_path_to_coordinates(second_wire)
 
