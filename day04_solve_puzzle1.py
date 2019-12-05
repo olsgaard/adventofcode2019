@@ -71,5 +71,9 @@ assert check_exanded_rules(122333) == True
 assert check_exanded_rules(111111) == False
 assert check_exanded_rules(223450) == False
 assert check_exanded_rules(123789) == False
+assert check_exanded_rules(123788) == True
+assert check_exanded_rules(889999) == True
+assert check_exanded_rules(112345) == True
+assert check_exanded_rules(122345) == True
 
 #print("puzzle 2:\t",sum([check_exanded_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
