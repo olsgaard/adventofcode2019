@@ -36,44 +36,4 @@ assert check_rules(123789) == False
 _MIN = 146810
 _MAX = 612564
 
-#print("puzzle 1:\t",sum([check_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
-
-def has_lonely_pair(numbers):
-	""" A lonely pair is 2 of the same digits not followed by another same digit 
-	In this context a pair is one digit followed by the same digit. 
-	Fx, [1,1] will have a pair at index 0 and a non-pair at index 1
-	"""
-	ns = str(numbers)
-	# List value of each pair
-	pairs = [ns[i] for i in range(len(ns)-1) if ns[i] == ns[i+1]]
-	# Check that at least one pair is not followed by the same pair
-	
-	if len(pairs) == 1: 
-		return True
-	else:
-		return any([pairs[i] != pairs[i+1] for i in range(len(pairs)-1)])
-
-def check_exanded_rules(password, _min=0, _max=999999, length=6):
-	return all((
-		len(str(password)) == length,
-		password <= _max,
-		password >= _min,
-		is_ascending(password),
-		has_lonely_pair(password)
-	))
-
-assert check_exanded_rules(112233) == True
-assert check_exanded_rules(123444) == False
-assert check_exanded_rules(111122) == True
-
-assert check_exanded_rules(111123) == False
-assert check_exanded_rules(122333) == True
-assert check_exanded_rules(111111) == False
-assert check_exanded_rules(223450) == False
-assert check_exanded_rules(123789) == False
-assert check_exanded_rules(123788) == True
-assert check_exanded_rules(889999) == True
-assert check_exanded_rules(112345) == True
-assert check_exanded_rules(122345) == True
-
-#print("puzzle 2:\t",sum([check_exanded_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
+print("puzzle 1:\t",sum([check_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
