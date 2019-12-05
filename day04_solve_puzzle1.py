@@ -36,7 +36,7 @@ assert check_rules(123789) == False
 _MIN = 146810
 _MAX = 612564
 
-print("puzzle 1:\t",sum([check_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
+#print("puzzle 1:\t",sum([check_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
 
 def has_lonely_pair(numbers):
 	""" A lonely pair is 2 of the same digits not followed by another same digit 
@@ -47,7 +47,11 @@ def has_lonely_pair(numbers):
 	# List value of each pair
 	pairs = [ns[i] for i in range(len(ns)-1) if ns[i] == ns[i+1]]
 	# Check that at least one pair is not followed by the same pair
-	return any([pairs[i] != pairs[i+1] for i in range(len(pairs)-1)])
+	
+	if len(pairs) == 1: 
+		return True
+	else:
+		return any([pairs[i] != pairs[i+1] for i in range(len(pairs)-1)])
 
 def check_exanded_rules(password, _min=0, _max=999999, length=6):
 	return all((
