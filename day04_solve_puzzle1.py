@@ -59,9 +59,13 @@ def check_exanded_rules(password, _min=0, _max=999999, length=6):
 	))
 
 assert check_exanded_rules(112233) == True
-assert check_exanded_rules(122333) == True
 assert check_exanded_rules(123444) == False
 assert check_exanded_rules(111122) == True
-assert check_exanded_rules(111123) == False
 
-print("puzzle 2:\t",sum([check_exanded_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
+assert check_exanded_rules(111123) == False
+assert check_exanded_rules(122333) == True
+assert check_exanded_rules(111111) == False
+assert check_exanded_rules(223450) == False
+assert check_exanded_rules(123789) == False
+
+#print("puzzle 2:\t",sum([check_exanded_rules(i, _MIN, _MAX) for i in range(_MIN, _MAX+1)]))
